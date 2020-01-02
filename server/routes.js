@@ -1,7 +1,7 @@
 const getBrandRoute = require("./routes/brandRouter");
 
 const routes = app => {
-  app.use("/v1/api/", getBrandRoute);
+  app.use("/api/v1/brands", getBrandRoute);
 };
 
 module.exports = routes;

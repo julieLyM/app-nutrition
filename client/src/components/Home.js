@@ -6,8 +6,13 @@ export default class Home extends Component {
     super(props);
 
     this.state = {
-      query: ""
+      query: "",
+      brands: []
     };
+  }
+
+  componentDidMount() {
+    this.submitBrand();
   }
 
   changeBrand = ({ target: { value: query } }) => {
@@ -17,15 +22,15 @@ export default class Home extends Component {
   };
 
   submitBrand = async () => {
-    const data = await brandSearch();
-    return data;
+    const data = await brandSearch(this.state.query);
   };
 
   render() {
+    const { brands } = this.state;
     return (
       <div>
         <h1>Find a brand</h1>
-        <input onChange={this.changeBrand} />
+        <input onChange={this.changeBrand} type="text" />
         <button onClick={this.submitBrand}>Search</button>
       </div>
     );
